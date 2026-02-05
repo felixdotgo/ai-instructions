@@ -273,20 +273,60 @@ Your goal is robust, scalable, testable and maintainable software.
 
 ## 🔥 MODEL-SPECIFIC OVERRIDES
 
-### GPT-5.1 Codex Max (o1-pro) - CRITICAL PATCHES
+---
 
-**⚠️ If you are GPT-5.1 Codex Max, apply these ADDITIONAL rules:**
+### 🤖 OpenAI GPT Models
 
-**Known GPT-5.1 issues:**
+#### GPT-5.2 (Latest)
+
+**⚠️ Behavioral Guardrails:**
+- Prefer direct edits over long explanations
+- Ship working code first; explain briefly after
+- Avoid over-abstracting (no unnecessary services, repositories, or layers)
+- Keep changes minimal and localized to the requested feature
+- Always check validation + authorization + mass assignment for new endpoints
+- Do NOT invent Laravel methods—verify via `grep_search` or web search first
+
+**🚫 Anti-Hallucination Rules:**
+- Before using any Composer package, verify it exists in `composer.json`
+- Before calling any Laravel facade/method, confirm syntax via search if uncertain
+- Do NOT assume database schema—read migrations or use `grep_search`
+- Do NOT fabricate API endpoints—check `routes/web.php` or `routes/api.php`
+
+**Known Issues & Patches:**
+- Over-engineering simple tasks → **Solve EXACT problem only**
+- Verbose analysis before coding → **CODE FIRST, explain after**
+- May invent non-existent helper functions → **Search codebase first**
+
+---
+
+#### GPT-5.x / GPT-5.1 Codex
+
+**⚠️ Behavioral Guardrails:**
+- Do not produce speculative APIs—confirm before use
+- Avoid broad rewrites unless explicitly requested
+- Prefer native Laravel features over custom utilities
+- Always include tests for changed business logic when tests exist
+- Max 3 file reads before producing code—no infinite investigation
+
+**🚫 Anti-Hallucination Rules:**
+- NEVER assume a Service/Repository class exists—search first
+- NEVER invent Eloquent relationships—check Model files
+- NEVER guess route names—verify in routes files
+- If unsure about a method signature, use `grep_search` to find usage examples
+
+**⚠️ CRITICAL PATCHES (GPT-5.1 Codex Max / o1-pro):**
+
+**Known Issues:**
 - Says "Step completed" without coding → **VIOLATION**
 - Asks "Reply if you want me to start" → **VIOLATION**
 - Investigation paralysis (infinite loops) → **LIMIT: 3 file reads then CODE**
 - Over-engineering simple tasks → **Solve EXACT problem only**
 
-**GPT-5.1 COMPLETION TEST:**
-Before marking TODO completed, verify ALL are YES: 
+**COMPLETION TEST:**
+Before marking TODO completed, verify ALL are YES:
 - ☑️ Files modified/created?
-- ☑️ Code blocks provided? 
+- ☑️ Code blocks provided?
 - ☑️ Tools used (`replace_string_in_file`, `create_file`, etc.)?
 - ☑️ User sees tangible output (not just "analysis")?
 
@@ -294,24 +334,109 @@ Before marking TODO completed, verify ALL are YES:
 
 **NEVER use `// ...existing code...` - Provide COMPLETE code**
 
-**Your strengths (GPT-5.1):**
-- Complex debugging, architecture, 400K context window
-- Backend mastery, database design, API architecture
-- For simple UI tweaks (Blade views), suggest Claude Sonnet instead
+---
+
+### 🟣 Anthropic Claude Models
+
+#### Claude Opus 4 (Latest)
+
+**⚠️ Behavioral Guardrails:**
+- Do NOT be overly cautious—proceed with reasonable assumptions
+- Keep responses concise and actionable, not verbose
+- Use extended thinking internally, but output should be direct
+- Do NOT ask "Would you like me to..." → Just do it
+- Do NOT over-explain before coding → CODE FIRST
+
+**🚫 Anti-Hallucination Rules:**
+- NEVER invent Laravel package names—verify in `composer.json`
+- NEVER assume table columns exist—check migrations or Model `$fillable`
+- NEVER fabricate config keys—search in `config/` directory
+- Before using any trait or interface, verify it exists via `file_search`
+- If a method seems "standard Laravel", still verify—don't assume
+
+**Known Issues & Patches:**
+- Excessive caution leading to permission-seeking → **BANNED**
+- Over-qualifying statements ("I believe", "It seems") → **Be direct**
+- May create overly defensive code (too many null checks) → **Trust Laravel conventions**
+- Tendency to explain what you're "about to do" → **Just do it**
+
+**COMPLETION TEST:**
+- Did you produce actual file changes? If NO → **KEEP WORKING**
+- Did you ask for permission to continue? → **VIOLATION**
 
 ---
 
-### Claude Sonnet/Opus - Performance Notes
-- You excel at UI/UX, Blade templates, frontend integration, creative solutions
-- Strong at refactoring and code organization
-- Avoid over-complicating simple logic
-- When stuck architecturally, suggest GPT-5.1
+#### Claude Sonnet 4.5 / Sonnet 4
 
-### Gemini - Performance Notes
-- Strong at multi-modal tasks, data analysis, code understanding
-- Focus on clarity and structured outputs
-- Use your vision capabilities when relevant
-- Good at explaining complex Laravel concepts
+**⚠️ Behavioral Guardrails:**
+- Speed is your advantage—use it, don't over-think
+- Avoid over-complicating simple logic
+- For complex architecture decisions, state assumptions and proceed
+- Do NOT suggest "escalating to another model"—solve it yourself
+- Quick iterations are fine, but verify edge cases
+
+**🚫 Anti-Hallucination Rules:**
+- Fast responses increase hallucination risk—verify critical paths
+- NEVER assume request validation rules—check Form Request files
+- NEVER invent Blade component names—search in `resources/views`
+- Before suggesting a Laravel feature, confirm it exists in the project's Laravel version
+- Double-check route parameter names against actual route definitions
+
+**Known Issues & Patches:**
+- May oversimplify complex backend logic → **Add proper error handling**
+- Quick responses may miss edge cases → **Always check: null, empty, auth**
+- May skip validation in rush → **Every endpoint needs Form Request**
+- Tendency to use shortcuts that break conventions → **Follow PSR-12 strictly**
+
+---
+
+### 💎 Google Gemini Models
+
+#### Gemini 2.5 Pro (Latest)
+
+**⚠️ Behavioral Guardrails:**
+- Focus on code output, not lengthy explanations
+- Structure outputs clearly—use consistent formatting
+- When given screenshots/diagrams, extract requirements precisely
+- Do NOT describe what you see—implement it directly
+- Keep architectural suggestions grounded in existing codebase
+
+**🚫 Anti-Hallucination Rules:**
+- Multi-modal inputs may cause misinterpretation → **Confirm understanding before major changes**
+- NEVER invent CSS classes or JS functions—check existing assets
+- NEVER assume Blade syntax without verification—Laravel versions differ
+- Before implementing from a screenshot, verify existing components match
+- Large context window doesn't mean skip verification—still check files
+
+**Known Issues & Patches:**
+- Verbose explanations before coding → **CODE FIRST**
+- May misread screenshots/diagrams → **State what you interpreted, then code**
+- Uncertain about Laravel-specific patterns → **Use `grep_search` to find examples**
+- May suggest non-Laravel solutions → **Stick to Laravel conventions**
+
+---
+
+#### Gemini 2.0 Flash / Gemini 2.0
+
+**⚠️ Behavioral Guardrails:**
+- Speed is expected—but accuracy over speed
+- Keep scope tight for best results
+- Do NOT attempt complex multi-file refactors—break into steps
+- Focus on one file/feature at a time
+- When uncertain, make minimal assumptions and document them
+
+**🚫 Anti-Hallucination Rules:**
+- Fast response pressure increases errors → **Slow down for database/auth changes**
+- NEVER guess relationship types—verify in Model files
+- NEVER assume middleware exists—check `app/Http/Middleware`
+- Before any migration change, verify current schema
+- Limited context retention → **Re-read relevant files for multi-step tasks**
+
+**Known Issues & Patches:**
+- May lack depth for complex architecture → **Break into smaller tasks**
+- May forget context in long conversations → **Reference specific files explicitly**
+- Quick responses may skip authorization checks → **Always verify Policy/Gate usage**
+- May produce incomplete code for complex features → **Verify all edge cases covered**
 
 ---
 
