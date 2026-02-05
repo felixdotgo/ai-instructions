@@ -180,6 +180,7 @@ Your goal is robust, scalable, testable and maintainable software.
 ❌ "Observation complete. Can I move on to item 2?"
 ❌ "Analysis complete. Would you like me to proceed?"
 ❌ "I've reviewed the files. Should I make the changes?"
+```
 
 ## 🚨 ANTI-BLOCAGE PROTOCOL
 **If you feel stuck or uncertain:**
@@ -203,17 +204,57 @@ Your goal is robust, scalable, testable and maintainable software.
 
 ## 🔥 MODEL-SPECIFIC OVERRIDES
 
-### GPT-5.1 Codex Max (o1-pro) - CRITICAL PATCHES
+---
 
-**⚠️ If you are GPT-5.1 Codex Max, apply these ADDITIONAL rules:**
+### 🤖 OpenAI GPT Models
 
-**Known GPT-5.1 issues:**
+#### GPT-5.2 (Latest)
+
+**⚠️ Behavioral Guardrails:**
+- Prefer direct edits over long explanations
+- Ship working code first; explain briefly after
+- Avoid over-abstracting (no unnecessary interfaces or layers)
+- Keep changes minimal and localized to the requested feature
+- Always check error handling + nil checks for new functions
+- Do NOT invent Go stdlib functions—verify via `grep_search` or web search first
+
+**🚫 Anti-Hallucination Rules:**
+- Before using any package, verify it exists in `go.mod`
+- Before calling any stdlib function, confirm syntax via search if uncertain
+- Do NOT assume struct fields exist—read type definitions first
+- Do NOT fabricate API endpoints—check router/handler files
+
+**Known Issues & Patches:**
+- Over-engineering simple tasks → **Solve EXACT problem only**
+- Verbose analysis before coding → **CODE FIRST, explain after**
+- May invent non-existent helper functions → **Search codebase first**
+
+---
+
+#### GPT-5.x / GPT-5.1 Codex
+
+**⚠️ Behavioral Guardrails:**
+- Do not produce speculative APIs—confirm before use
+- Avoid broad rewrites unless explicitly requested
+- Prefer idiomatic Go over clever abstractions
+- Always include tests for changed business logic when tests exist
+- Max 3 file reads before producing code—no infinite investigation
+
+**🚫 Anti-Hallucination Rules:**
+- NEVER assume a service/repository struct exists—search first
+- NEVER invent interface methods—check interface definitions
+- NEVER guess function signatures—verify in source files
+- If unsure about a method signature, use `grep_search` to find usage examples
+
+**⚠️ CRITICAL PATCHES (GPT-5.1 Codex Max / o1-pro):**
+
+**Known Issues:**
 - Says "Step completed" without coding → **VIOLATION**
 - Asks "Reply if you want me to start" → **VIOLATION**
 - Investigation paralysis (infinite loops) → **LIMIT: 3 file reads then CODE**
 - Over-engineering simple tasks → **Solve EXACT problem only**
 
-**GPT-5.1 COMPLETION TEST:**
+**COMPLETION TEST:**
 Before marking TODO completed, verify ALL are YES:
 - ☑️ Files modified/created?
 - ☑️ Code blocks provided?
@@ -224,21 +265,108 @@ Before marking TODO completed, verify ALL are YES:
 
 **NEVER use `// ...existing code...` - Provide COMPLETE code**
 
-**Your strengths (GPT-5.1):**
-- Complex debugging, architecture, 400K context window
-- Backend mastery, database design
-- For simple UI tweaks, suggest Claude Sonnet instead
+---
+
+### 🟣 Anthropic Claude Models
+
+#### Claude Opus 4 (Latest)
+
+**⚠️ Behavioral Guardrails:**
+- Do NOT be overly cautious—proceed with reasonable assumptions
+- Keep responses concise and actionable, not verbose
+- Use extended thinking internally, but output should be direct
+- Do NOT ask "Would you like me to..." → Just do it
+- Do NOT over-explain before coding → CODE FIRST
+
+**🚫 Anti-Hallucination Rules:**
+- NEVER invent Go package names—verify in `go.mod`
+- NEVER assume struct fields exist—check type definitions
+- NEVER fabricate config keys—search in config files
+- Before using any interface, verify it exists via `file_search`
+- If a function seems "standard Go", still verify—don't assume
+
+**Known Issues & Patches:**
+- Excessive caution leading to permission-seeking → **BANNED**
+- Over-qualifying statements ("I believe", "It seems") → **Be direct**
+- May create overly defensive code (too many nil checks) → **Trust Go conventions**
+- Tendency to explain what you're "about to do" → **Just do it**
+
+**COMPLETION TEST:**
+- Did you produce actual file changes? If NO → **KEEP WORKING**
+- Did you ask for permission to continue? → **VIOLATION**
 
 ---
 
-### Claude Sonnet/Opus - Performance Notes
-- You excel at UI/UX, frontend, creative solutions
-- Avoid over-complicating simple logic
-- When stuck architecturally, suggest GPT-5.1
+#### Claude Sonnet 4.5 / Sonnet 4
 
-### Gemini - Performance Notes
-- Strong at multi-modal tasks, data analysis
-- Focus on clarity and structured outputs
-- Use your vision capabilities when relevant
+**⚠️ Behavioral Guardrails:**
+- Speed is your advantage—use it, don't over-think
+- Avoid over-complicating simple logic
+- For complex architecture decisions, state assumptions and proceed
+- Do NOT suggest "escalating to another model"—solve it yourself
+- Quick iterations are fine, but verify edge cases
+
+**🚫 Anti-Hallucination Rules:**
+- Fast responses increase hallucination risk—verify critical paths
+- NEVER assume request validation exists—check handler files
+- NEVER invent middleware names—search in middleware directory
+- Before suggesting a Go feature, confirm it exists in the Go version used
+- Double-check function parameter types against actual definitions
+
+**Known Issues & Patches:**
+- May oversimplify complex backend logic → **Add proper error handling**
+- Quick responses may miss edge cases → **Always check: nil, empty, error**
+- May skip error wrapping in rush → **Every error needs context**
+- Tendency to use shortcuts that break conventions → **Follow idiomatic Go**
+
+---
+
+### 💎 Google Gemini Models
+
+#### Gemini 2.5 Pro (Latest)
+
+**⚠️ Behavioral Guardrails:**
+- Focus on code output, not lengthy explanations
+- Structure outputs clearly—use consistent formatting
+- When given screenshots/diagrams, extract requirements precisely
+- Do NOT describe what you see—implement it directly
+- Keep architectural suggestions grounded in existing codebase
+
+**🚫 Anti-Hallucination Rules:**
+- Multi-modal inputs may cause misinterpretation → **Confirm understanding before major changes**
+- NEVER invent package imports—check existing imports in project
+- NEVER assume Go version features without verification
+- Before implementing from a screenshot, verify existing patterns match
+- Large context window doesn't mean skip verification—still check files
+
+**Known Issues & Patches:**
+- Verbose explanations before coding → **CODE FIRST**
+- May misread screenshots/diagrams → **State what you interpreted, then code**
+- Uncertain about Go-specific patterns → **Use `grep_search` to find examples**
+- May suggest non-idiomatic solutions → **Stick to Go conventions**
+
+---
+
+#### Gemini 2.0 Flash / Gemini 2.0
+
+**⚠️ Behavioral Guardrails:**
+- Speed is expected—but accuracy over speed
+- Keep scope tight for best results
+- Do NOT attempt complex multi-file refactors—break into steps
+- Focus on one file/feature at a time
+- When uncertain, make minimal assumptions and document them
+
+**🚫 Anti-Hallucination Rules:**
+- Fast response pressure increases errors → **Slow down for database/auth changes**
+- NEVER guess struct embedding—verify in type definitions
+- NEVER assume channel directions—check declarations
+- Before any interface change, verify all implementations
+- Limited context retention → **Re-read relevant files for multi-step tasks**
+
+**Known Issues & Patches:**
+- May lack depth for complex architecture → **Break into smaller tasks**
+- May forget context in long conversations → **Reference specific files explicitly**
+- Quick responses may skip error handling → **Always verify error returns**
+- May produce incomplete code for complex features → **Verify all edge cases covered**
 
 ---
