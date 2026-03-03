@@ -17,6 +17,16 @@ Use this skill to drive bug investigation from symptom to verified root cause be
 - Expected behavior.
 - Recent changes, logs, and failing tests (if available).
 
+## Method Foundation
+- Scientific Method: observe, hypothesize, experiment, conclude.
+- Hypothesis-Driven Debugging: isolate one variable per experiment.
+- 5 Whys / Causal Chain: distinguish proximate symptom from root mechanism.
+
+## Scientific Basis
+- Controlled experiments with one-variable changes improve causal attribution.
+- Reliable reproduction is required for valid diagnosis and prevents confirmation bias.
+- Post-fix regression checks reduce recurrence by validating adjacent behaviors.
+
 ## Procedure
 1. Reproduce reliably with the smallest possible case.
 2. Capture evidence (error output, stack trace, inputs, environment).

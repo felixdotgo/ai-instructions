@@ -17,6 +17,16 @@ Use this skill to convert requests into completion-ready delivery across require
 - Affected components and dependencies.
 - Deployment model and operational requirements.
 
+## Method Foundation
+- PDCA (Plan-Do-Check-Act): frame each gate as a closed feedback loop.
+- Iterative/Incremental Delivery: reduce batch size and integration risk.
+- Risk-Based Release Management: explicit rollout and rollback criteria.
+
+## Scientific Basis
+- Smaller batch sizes are associated with lower change-failure risk and faster recovery.
+- Explicit acceptance criteria improve verification reliability and reduce ambiguity.
+- Observability-first delivery shortens detection and diagnosis time in production.
+
 ## Procedure
 1. Requirements: define objective, scope, acceptance criteria.
 2. Analysis: map dependencies, compatibility, and risk.

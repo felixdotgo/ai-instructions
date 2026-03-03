@@ -25,6 +25,16 @@ Do not activate for trivial one-step edits unless the user explicitly asks for d
 - Constraints (technical, product, compliance, timeline).
 - Validation expectations (tests/checks/build/lint).
 
+## Method Foundation
+- Top-Down Functional Decomposition: split goal into independently verifiable slices.
+- Divide-and-Conquer Sequencing: order by dependency and risk.
+- Goal-Question-Metric (GQM): derive acceptance checks from objective.
+
+## Scientific Basis
+- Task chunking reduces cognitive overload and planning errors in complex work.
+- Explicit dependency mapping reduces integration surprises and rework.
+- Per-slice verification improves early defect discovery versus end-only validation.
+
 ## Outputs
 Produce:
 1. A short objective statement.

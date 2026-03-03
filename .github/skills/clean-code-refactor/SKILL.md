@@ -17,6 +17,16 @@ Use this skill to perform behavior-preserving refactors with clear intent and lo
 - Existing tests and expected behavior contracts.
 - Scope boundaries and non-goals.
 
+## Method Foundation
+- Behavior-Preserving Refactoring (Fowler): small, semantics-preserving transformations.
+- Boy Scout Rule: leave code cleaner than found, in bounded scope.
+- Working Agreements: single-change intent, reversible steps, contract stability.
+
+## Scientific Basis
+- Complexity and defect risk correlate with larger, mixed-purpose changes; incremental refactors reduce change risk.
+- Fast feedback loops (run-near tests after each step) improve defect detection latency.
+- Cognitive load research supports simpler control flow and clearer naming for maintainability.
+
 ## Procedure
 1. Define invariants (what must not change).
 2. Identify highest-value refactor target.

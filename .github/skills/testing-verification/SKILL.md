@@ -17,6 +17,16 @@ Use this skill to design efficient, risk-based validation that starts narrow and
 - Existing test structure and tools.
 - Risk areas (security, data integrity, performance, compatibility).
 
+## Method Foundation
+- Risk-Based Testing: prioritize by impact × likelihood.
+- Test Pyramid: optimize fast feedback with balanced test layers.
+- Boundary Value + Equivalence Partitioning for edge-case design.
+
+## Scientific Basis
+- Earlier, targeted tests reduce feedback latency and debugging cost.
+- Layered test portfolios improve defect detection coverage across failure types.
+- Explicit edge/negative-case design improves fault detection versus happy-path-only tests.
+
 ## Procedure
 1. Map change surface to required validations.
 2. Run nearest targeted tests first.

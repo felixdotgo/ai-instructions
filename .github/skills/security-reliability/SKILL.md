@@ -17,6 +17,16 @@ Use this skill to reduce security and runtime risks through structured threat an
 - Access control rules and threat assumptions.
 - Availability/reliability expectations.
 
+## Method Foundation
+- STRIDE-inspired Threat Modeling for security risk enumeration.
+- Trust Boundary Analysis for input/control segregation.
+- FMEA-style Failure Mode Analysis for reliability controls.
+
+## Scientific Basis
+- Structured threat modeling increases coverage versus ad-hoc brainstorming.
+- Defense-in-depth and least privilege reduce exploit impact and blast radius.
+- Designing for partial failure (timeouts, retries, idempotency) improves resilience.
+
 ## Procedure
 1. Identify assets, entry points, and trust boundaries.
 2. Enumerate plausible threats and failure modes.
