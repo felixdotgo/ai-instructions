@@ -24,6 +24,19 @@ Kho này chứa bộ file hướng dẫn Copilot theo kiến trúc phân lớp, 
 - `.github/instructions/project-space-template.copilot-instructions.md`
 	- Mẫu placeholder để tùy chỉnh theo từng dự án
 	- Placeholder cho SDLC, nguyên tắc code, bảo mật và vận hành
+- `.github/skills/problem-decomposition/SKILL.md`
+	- File skill cho AI agent để phân rã bài toán có cấu trúc
+	- Hướng dẫn bổ trợ cho lập kế hoạch theo lát cắt triển khai và kiểm chứng
+- `.github/skills/debugging-root-cause/SKILL.md`
+	- File skill cho quy trình debug theo bằng chứng và cô lập nguyên nhân gốc
+- `.github/skills/testing-verification/SKILL.md`
+	- File skill cho chiến lược kiểm thử/xác minh theo mức rủi ro
+- `.github/skills/clean-code-refactor/SKILL.md`
+	- File skill cho refactor clean code theo từng bước an toàn
+- `.github/skills/security-reliability/SKILL.md`
+	- File skill cho tăng cường bảo mật và độ tin cậy vận hành
+- `.github/skills/delivery-sdlc-execution/SKILL.md`
+	- File skill cho thực thi đầu-cuối theo SDLC
 
 ## Mô hình ưu tiên (precedence)
 Khi nhiều file cùng áp dụng, xử lý xung đột theo thứ tự sau:

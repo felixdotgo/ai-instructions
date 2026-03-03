@@ -24,6 +24,19 @@ This repository contains layered Copilot instruction files designed for precise 
 - `.github/instructions/project-space-template.copilot-instructions.md`
 	- Placeholder template for project-specific customization
 	- SDLC, coding principles, security, and operations placeholders
+- `.github/skills/problem-decomposition/SKILL.md`
+	- AI-agent skill file for structured problem decomposition
+	- Complementary guidance for planning implementation slices and validation
+- `.github/skills/debugging-root-cause/SKILL.md`
+	- AI-agent skill file for debugging workflows and root-cause isolation
+- `.github/skills/testing-verification/SKILL.md`
+	- AI-agent skill file for risk-based testing and verification strategy
+- `.github/skills/clean-code-refactor/SKILL.md`
+	- AI-agent skill file for incremental clean-code refactoring
+- `.github/skills/security-reliability/SKILL.md`
+	- AI-agent skill file for security and reliability safeguards
+- `.github/skills/delivery-sdlc-execution/SKILL.md`
+	- AI-agent skill file for end-to-end SDLC execution
 
 ## Precedence Model
 When multiple files apply, resolve conflicts in this order:

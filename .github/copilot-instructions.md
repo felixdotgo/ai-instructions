@@ -20,6 +20,20 @@ This file is the universal baseline for all AI models in this repository.
   - Architecture/system-design output constraints.
 - `.github/instructions/project-space-template.copilot-instructions.md`
   - Placeholder template for project-specific customization.
+- `.github/skills/problem-decomposition/SKILL.md`
+  - AI-agent skill for execution-ready problem decomposition.
+- `.github/skills/debugging-root-cause/SKILL.md`
+  - AI-agent skill for evidence-based debugging and root-cause isolation.
+- `.github/skills/testing-verification/SKILL.md`
+  - AI-agent skill for layered verification and confidence building.
+- `.github/skills/clean-code-refactor/SKILL.md`
+  - AI-agent skill for safe, behavior-preserving refactoring.
+- `.github/skills/security-reliability/SKILL.md`
+  - AI-agent skill for trust-boundary security and reliability hardening.
+- `.github/skills/delivery-sdlc-execution/SKILL.md`
+  - AI-agent skill for end-to-end SDLC execution and handoff.
+
+Skills are complementary guidance and do not override core precedence rules.
 
 ## 3) Precedence and Conflict Resolution
 When multiple instructions apply, use this order:
