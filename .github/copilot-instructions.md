@@ -49,23 +49,16 @@ If rules conflict, follow higher precedence and state assumptions explicitly.
 - Match user response language unless user requests a different language.
 - Keep code identifiers/comments/tests in English.
 - Use evidence-based analysis; avoid inventing APIs, fields, routes, or dependencies.
-- For implementation tasks, deliver concrete file changes and validation outcomes.
-- For design/review tasks, deliver structured artifacts with assumptions and trade-offs.
+- For implementation tasks, design/review tasks, and completion artifacts, follow core protocol canonical rules.
 
-## 5) SDLC Baseline
-Every substantial task should account for:
-- Requirements and acceptance criteria
-- Analysis and impact
-- Design decisions and trade-offs
-- Build quality and error handling
-- Verification and test coverage
-- Release/rollback readiness
-- Operations and observability
-- Maintenance updates and incident learning
+## 5) Token Efficiency Policy Routing
+- Global anti token-burning rules are defined in `.github/instructions/core.copilot-instructions.md`.
+- Language overlays and skills must not redefine global budgets or stop conditions.
+- If any lower-level guidance conflicts with token-efficiency policy, core policy wins.
 
-## 6) Completion Criteria
-A task is complete when applicable artifacts are delivered:
-- Changed files (or explicit no-change outcome)
-- Validation/check results
-- Assumptions/known limitations
-- Next risk item when relevant
+## 6) Canonical Source Matrix
+- SDLC lifecycle gates: `.github/instructions/core.copilot-instructions.md`
+- Completion contract and final checklist: `.github/instructions/core.copilot-instructions.md`
+- Token budgets and exploration stop conditions: `.github/instructions/core.copilot-instructions.md`
+- Language-specific coding rules: corresponding files under `.github/instructions/`
+- Specialized workflows: corresponding files under `.github/skills/`

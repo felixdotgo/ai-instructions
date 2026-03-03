@@ -41,11 +41,8 @@ description: "Go Overlay - Principal Architect Protocol"
 - Do not log secrets, tokens, or sensitive payloads.
 - Raise compliance unknowns as explicit assumptions instead of guessing.
 
-## 7) Release and Operations Expectations
-For changes with operational risk, include:
-- migration or compatibility notes
-- rollback trigger and rollback path
-- required observability updates (logs/metrics/traces/alerts)
+## 7) Release, Operations, and Completion Routing
+- Use core protocol as the single source for release, operations, and completion artifacts.
 
 ## 8) Forbidden Go Patterns
 - `interface{}` / `any` without clear justification at boundary points.
@@ -53,8 +50,5 @@ For changes with operational risk, include:
 - Shared mutable state across goroutines without synchronization strategy.
 - Domain logic coupled directly to transport/database concerns.
 
-## 9) Completion Notes for Go Tasks
-In final output for implementation tasks include:
-- changed file list
-- verification executed
-- residual risk or assumption (if any)
+## 9) Output Rule
+- Do not duplicate completion checklist here; follow core completion contract.

@@ -45,9 +45,7 @@ Use this skill to reduce security and runtime risks through structured threat an
 - Assuming trusted input without validation.
 - Ignoring partial failure and retry behavior.
 
-## Output Template
-1. Risk Surface
-2. Threats/Failure Modes
-3. Mitigations Implemented
-4. Verification
-5. Monitoring/Runbook Notes
+## Output Template (Minimal by Default)
+- Report only risk items that were analyzed or mitigated.
+- Default order: Risk Surface -> Mitigation -> Verification -> Monitoring Notes.
+- Avoid generic threat lists when no evidence or change exists.

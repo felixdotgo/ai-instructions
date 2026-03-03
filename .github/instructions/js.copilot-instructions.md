@@ -38,11 +38,8 @@ description: "JavaScript/TypeScript Overlay - Principal Architect Protocol"
 - Never expose secrets in logs, errors, or client payloads.
 - If privacy/compliance requirements are unclear, mark as explicit open question.
 
-## 7) Release and Operations Expectations
-For changes with non-trivial runtime impact, include:
-- compatibility and migration notes
-- rollout and rollback strategy
-- observability additions (logs/metrics/traces/alerts)
+## 7) Release, Operations, and Completion Routing
+- Use core protocol as the single source for release, operations, and completion artifacts.
 
 ## 8) Forbidden JS/TS Patterns
 - Type erasure (`any` everywhere) instead of typed boundaries.
@@ -50,8 +47,5 @@ For changes with non-trivial runtime impact, include:
 - Over-abstracted utility wrappers for simple language features.
 - New dependencies without compatibility and necessity check.
 
-## 9) Completion Notes for JS/TS Tasks
-In final output for implementation tasks include:
-- changed file list
-- validation executed
-- known limitations or assumptions
+## 9) Output Rule
+- Do not duplicate completion checklist here; follow core completion contract.

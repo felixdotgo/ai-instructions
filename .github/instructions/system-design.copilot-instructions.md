@@ -68,12 +68,14 @@ Avoid absolute claims without assumptions and rationale.
 - Do not claim guarantees without verification path.
 
 ## 7) SDLC Handoff Requirements (Mandatory)
-Every design artifact should include:
+Every design artifact should include design-specific handoff details:
 - implementation readiness criteria
-- verification strategy (functional, reliability, security)
-- deployment/rollout/rollback plan
-- operations readiness (SLI/SLO intent, logs, metrics, traces, alerts)
+- verification strategy framing (functional, reliability, security)
+- architecture-level rollout and rollback intent
+- operations intent (SLI/SLO direction, logs, metrics, traces, alerts)
 - ownership and post-release review points
+
+Use core protocol as the canonical source for generic completion checklist and token-efficiency limits.
 
 ## 8) Completion Criteria
 A system design task is complete only when:

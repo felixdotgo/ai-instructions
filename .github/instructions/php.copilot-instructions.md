@@ -39,11 +39,8 @@ description: "PHP Laravel Overlay - Principal Architect Protocol"
 - Prevent XSS by default escaping in Blade unless explicitly sanitized.
 - Avoid logging secrets and sensitive personal data.
 
-## 7) Release and Operations Expectations
-For risk-bearing changes, include:
-- migration compatibility and data backfill notes
-- rollout and rollback plan
-- observability updates (logs/metrics/alerts)
+## 7) Release, Operations, and Completion Routing
+- Use core protocol as the single source for release, operations, and completion artifacts.
 
 ## 8) Forbidden Laravel/PHP Patterns
 - Business logic directly embedded in Blade views.
@@ -51,8 +48,5 @@ For risk-bearing changes, include:
 - Direct unparameterized SQL with user input.
 - Calling `env()` outside configuration files.
 
-## 9) Completion Notes for Laravel/PHP Tasks
-In final output for implementation tasks include:
-- changed file list
-- validation executed
-- remaining risk or assumptions
+## 9) Output Rule
+- Do not duplicate completion checklist here; follow core completion contract.

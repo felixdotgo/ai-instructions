@@ -47,9 +47,7 @@ Use this skill to convert requests into completion-ready delivery across require
 - Shipping without rollback or monitoring considerations.
 - Treating documentation/operations as optional for impactful changes.
 
-## Output Template
-1. Scope and Acceptance
-2. Implementation Summary
-3. Verification Evidence
-4. Release/Rollback Plan
-5. Operations/Maintenance Notes
+## Output Template (Minimal by Default)
+- Report only sections that changed or were validated.
+- Default order: Scope -> Implementation -> Verification -> Release/Risk.
+- Reference core lifecycle/completion contract instead of duplicating full checklists.

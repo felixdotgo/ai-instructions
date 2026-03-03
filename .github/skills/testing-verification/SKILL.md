@@ -51,9 +51,7 @@ Use this skill to design efficient, risk-based validation that starts narrow and
 - Skipping edge/error path verification.
 - Merging changes with unacknowledged test gaps.
 
-## Output Template
-1. Change Surface
-2. Tests Executed
-3. Results
-4. Gaps/Risks
-5. Release Confidence
+## Output Template (Minimal by Default)
+- Report only executed validations and observed outcomes.
+- Default order: Change Surface -> Tests Executed -> Results -> Gaps/Risks.
+- Avoid confidence statements without measurable verification evidence.

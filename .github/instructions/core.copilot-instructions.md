@@ -48,6 +48,24 @@ Use when task asks for critique, QA, risk analysis, or post-implementation valid
 - Style: concise, technical, actionable.
 - Progress updates: short, task-focused, and tied to concrete actions.
 
+## 4.1) Token Efficiency Policy (Mandatory)
+- Budget by default: keep routine final responses to <= 6 bullets or <= 120 words unless user requests more depth.
+- Section cap: use at most 4 sections in normal tasks; expand only when artifact format requires it.
+- No duplication: do not repeat the same checklist item across multiple sections.
+- Search budget: perform 1 broad discovery pass, then up to 3 targeted reads before first substantive output.
+- Re-read guard: do not re-read the same unchanged file range unless previous read was incomplete.
+- Stop condition: stop exploration when 2 independent evidence points support a conclusion or when 3 consecutive searches add no new signal.
+- Tool minimization: for read-only tasks, use only listing/search/read tools unless execution is explicitly required.
+- Parallel-first: batch independent read-only tool calls when possible.
+- Skill loading gate: activate 1 primary skill by default; add others only if task scope demands it.
+- Progress update gate: send updates on phase changes or new evidence, not on micro-steps.
+- Compression rule: use concise summaries and reference canonical sections instead of restating full guidance.
+
+### Token Policy Exceptions
+- User-requested deep analysis, audits, or reports may exceed default budget.
+- System design artifacts may use extended structure when required by the design overlay.
+- Safety, security, compliance, or incident-critical context must not be omitted for brevity.
+
 ## 5) Execution Contract
 - Action bias: execute directly when context is sufficient.
 - Clarify only when ambiguity materially changes architecture, security, or data integrity.

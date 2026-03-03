@@ -46,10 +46,7 @@ Use this skill to drive bug investigation from symptom to verified root cause be
 - Mixing multiple speculative fixes in one step.
 - Declaring success without regression verification.
 
-## Output Template
-1. Symptom
-2. Repro
-3. Root Cause
-4. Fix
-5. Verification
-6. Residual Risk
+## Output Template (Minimal by Default)
+- Report only sections with direct evidence from repro/logs/tests.
+- Default order: Symptom -> Root Cause -> Fix -> Verification -> Residual Risk.
+- Omit empty sections; do not pad with generic text.

@@ -51,9 +51,7 @@ Use this skill to perform behavior-preserving refactors with clear intent and lo
 - Changing behavior under “refactor” label.
 - Introducing abstractions without repeated use cases.
 
-## Output Template
-1. Refactor Goal
-2. Invariants
-3. Changes Applied
-4. Verification
-5. Remaining Debt
+## Output Template (Minimal by Default)
+- Report only sections with concrete evidence for this task.
+- Default order: Goal -> Changes -> Verification -> Residual Risk.
+- Do not restate SDLC/completion checklists already covered by core protocol.

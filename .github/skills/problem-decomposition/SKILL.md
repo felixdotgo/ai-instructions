@@ -103,12 +103,7 @@ A decomposition is acceptable only if:
 - Hidden assumptions about APIs, schemas, or environments.
 - Validation deferred to the end without per-slice checks.
 
-## Lightweight Output Template
-Use this structure when presenting decomposition:
-
-1. Objective
-2. Scope (In / Out)
-3. Impacted Areas
-4. Ordered Slices
-5. Verification Plan
-6. Assumptions and Risks
+## Lightweight Output Template (Minimal by Default)
+- Include only: Objective, Ordered Slices, Verification Plan, Assumptions/Risks.
+- Add Scope and Impacted Areas only when they materially change decisions.
+- Keep each section concise and avoid repeating unchanged constraints.
