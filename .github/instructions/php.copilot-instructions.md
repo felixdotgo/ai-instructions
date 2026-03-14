@@ -33,20 +33,8 @@ description: "PHP Laravel Overlay - Principal Architect Protocol"
 - Cover happy path, validation failures, and authorization denial paths.
 - Mock external dependencies at boundaries.
 
-## 6) Security and Compliance Additions
-- Validate all external inputs.
-- Apply CSRF protection for state-changing web routes.
-- Prevent XSS by default escaping in Blade unless explicitly sanitized.
-- Avoid logging secrets and sensitive personal data.
-
-## 7) Release, Operations, and Completion Routing
-- Use core protocol as the single source for release, operations, and completion artifacts.
-
-## 8) Forbidden Laravel/PHP Patterns
+## 6) Forbidden Laravel/PHP Patterns
 - Business logic directly embedded in Blade views.
 - Missing authorization checks on protected operations.
 - Direct unparameterized SQL with user input.
 - Calling `env()` outside configuration files.
-
-## 9) Output Rule
-- Do not duplicate completion checklist here; follow core completion contract.

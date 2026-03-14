@@ -1,86 +1,46 @@
 ---
-applyTo: "**/*.md"
+applyTo: "**/design/*.md,**/adr/*.md,**/rfc/*.md"
 description: "System Design Overlay - Principal Architect Protocol"
 ---
 
 # System Design Overlay (Principal Architect)
 
 ## 1) Scope
-This file applies to:
-- system design documents
-- architecture decision records (ADR)
-- technical design specs and RFCs
-- architecture review outputs
+Applies to: system design documents, ADRs, technical design specs, RFCs, architecture reviews.
 
-Allowed output formats:
-- Markdown
-- Mermaid
-- PlantUML
+Allowed formats: Markdown, Mermaid, PlantUML.
+Disallowed: application source code, implementation-level pseudo-code.
 
-Disallowed output:
-- application source code
-- pseudo-code that behaves like implementation detail
-
-Cross-cutting behavior and SDLC governance are defined in [core.copilot-instructions.md](core.copilot-instructions.md).
-
-## 2) Domain Language Rules
-- Reuse existing domain terms from source documents whenever available.
-- Keep naming consistent through the document.
-- If new terminology is required, define it once and use it consistently.
+## 2) Domain Language
+- Reuse existing domain terms from source documents.
+- Keep naming consistent. Define new terms once if needed.
 
 ## 3) Structure Rules
-- If an existing document structure exists, follow it.
-- If no structure exists, use this default:
+- Follow existing document structure if present.
+- Default structure:
   1. Problem Statement
   2. Context and Constraints
-  3. Functional Requirements
-  4. Non-Functional Requirements
-  5. Architecture Overview
-  6. Components and Responsibilities
-  7. Data Model and Data Lifecycle
-  8. Key Flows
-  9. Failure Modes and Recovery
-  10. Security and Compliance
-  11. Capacity and Scaling
-  12. Delivery Plan and Milestones
-  13. Rollout and Rollback Strategy
-  14. Observability and Operations
-  15. Trade-offs and Alternatives
-  16. Open Questions and Assumptions
+  3. Architecture Overview
+  4. Components and Responsibilities
+  5. Data Model and Lifecycle
+  6. Key Flows
+  7. Failure Modes and Recovery
+  8. Security and Compliance
+  9. Rollout, Rollback, and Operations
+  10. Trade-offs, Assumptions, and Open Questions
 
-## 4) Decision Quality Rules
-For each major decision, state:
-- why this decision exists
-- what is gained
-- what is traded off
-- why it fits current constraints
-
-Avoid absolute claims without assumptions and rationale.
+## 4) Decision Quality
+For each major decision: why it exists, what is gained, what is traded off, why it fits constraints.
 
 ## 5) Diagram Rules
-- One diagram per concern.
-- Diagram names and component labels must match domain language.
-- Keep diagrams functional, not decorative.
+- One diagram per concern. Labels must match domain language. Functional, not decorative.
 
-## 6) Anti-Hallucination Rules
-- Do not invent business rules, scale numbers, or infrastructure constraints.
-- If data is missing, record as assumption or open question.
-- Do not claim guarantees without verification path.
+## 6) SDLC Handoff
+Design artifacts must include:
+- Implementation readiness criteria
+- Verification strategy framing
+- Rollout/rollback intent
+- Operations intent (SLI/SLO, logs, metrics, alerts)
 
-## 7) SDLC Handoff Requirements (Mandatory)
-Every design artifact should include design-specific handoff details:
-- implementation readiness criteria
-- verification strategy framing (functional, reliability, security)
-- architecture-level rollout and rollback intent
-- operations intent (SLI/SLO direction, logs, metrics, traces, alerts)
-- ownership and post-release review points
-
-Use core protocol as the canonical source for generic completion checklist and token-efficiency limits.
-
-## 8) Completion Criteria
-A system design task is complete only when:
-- structure is consistent
-- assumptions/open questions are explicit
-- trade-offs are documented
-- at least one architecture diagram is provided when architecture is in scope
-- delivery and operational handoff sections are included
+## 7) Completion Criteria
+Complete when: structure consistent, assumptions explicit, trade-offs documented, architecture diagram provided (if in scope), handoff sections included.

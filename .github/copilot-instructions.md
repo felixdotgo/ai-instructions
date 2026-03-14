@@ -1,64 +1,21 @@
 # Global Copilot Instructions (Repository Entry Point)
 
-This file is the universal baseline for all AI models in this repository.
+Universal baseline cho tất cả AI models trong repo này.
 
-## 1) Purpose
-- Provide one consistent instruction entrypoint for all tasks.
-- Route specialized behavior to layered instruction files.
-- Keep outputs precise, verifiable, and SDLC-aware.
-
-## 2) Repository Instruction Map
-- `.github/instructions/core.copilot-instructions.md`
-  - Cross-language behavior, SDLC lifecycle gates, completion contract.
-- `.github/instructions/go.copilot-instructions.md`
-  - Go-specific coding standards.
-- `.github/instructions/js.copilot-instructions.md`
-  - JavaScript/TypeScript-specific coding standards.
-- `.github/instructions/php.copilot-instructions.md`
-  - Laravel/PHP-specific coding standards.
-- `.github/instructions/system-design.copilot-instructions.md`
-  - Architecture/system-design output constraints.
-- `.github/instructions/project-space-template.copilot-instructions.md`
-  - Placeholder template for project-specific customization.
-- `.github/skills/problem-decomposition/SKILL.md`
-  - AI-agent skill for execution-ready problem decomposition.
-- `.github/skills/debugging-root-cause/SKILL.md`
-  - AI-agent skill for evidence-based debugging and root-cause isolation.
-- `.github/skills/testing-verification/SKILL.md`
-  - AI-agent skill for layered verification and confidence building.
-- `.github/skills/clean-code-refactor/SKILL.md`
-  - AI-agent skill for safe, behavior-preserving refactoring.
-- `.github/skills/security-reliability/SKILL.md`
-  - AI-agent skill for trust-boundary security and reliability hardening.
-- `.github/skills/delivery-sdlc-execution/SKILL.md`
-  - AI-agent skill for end-to-end SDLC execution and handoff.
-
-Skills are complementary guidance and do not override core precedence rules.
-
-## 3) Precedence and Conflict Resolution
-When multiple instructions apply, use this order:
+## 1) Precedence
+Khi nhiều instructions apply, ưu tiên theo thứ tự:
 1. Platform/system safety policies
 2. User request requirements
-3. `.github/instructions/core.copilot-instructions.md`
-4. Relevant language/system-design overlay
-5. Project-specific custom instruction (if created from template)
+3. Core protocol (`core.copilot-instructions.md`)
+4. Language/system-design overlay
+5. Project-specific custom instruction
 
-If rules conflict, follow higher precedence and state assumptions explicitly.
+Conflict → follow higher precedence, state assumptions.
 
-## 4) Default Operating Rules
-- Match user response language unless user requests a different language.
-- Keep code identifiers/comments/tests in English.
-- Use evidence-based analysis; avoid inventing APIs, fields, routes, or dependencies.
-- For implementation tasks, design/review tasks, and completion artifacts, follow core protocol canonical rules.
-
-## 5) Token Efficiency Policy Routing
-- Global anti token-burning rules are defined in `.github/instructions/core.copilot-instructions.md`.
-- Language overlays and skills must not redefine global budgets or stop conditions.
-- If any lower-level guidance conflicts with token-efficiency policy, core policy wins.
-
-## 6) Canonical Source Matrix
-- SDLC lifecycle gates: `.github/instructions/core.copilot-instructions.md`
-- Completion contract and final checklist: `.github/instructions/core.copilot-instructions.md`
-- Token budgets and exploration stop conditions: `.github/instructions/core.copilot-instructions.md`
-- Language-specific coding rules: corresponding files under `.github/instructions/`
-- Specialized workflows: corresponding files under `.github/skills/`
+## 2) Operating Rules
+- **Ngôn ngữ mặc định: tiếng Việt.** Chỉ dùng English khi user yêu cầu rõ ràng.
+- Code identifiers/comments/tests luôn bằng English.
+- **Question-first**: khi scope/requirement mơ hồ, hỏi clarify trước khi implement. Không giả định khi có thể hỏi.
+- **Output ngắn gọn**: trả lời dạng plan/TODO + kết quả. Tránh giải thích dài. Chỉ giải thích khi user yêu cầu.
+- Evidence-based: không bịa APIs, fields, routes, dependencies.
+- Token efficiency rules định nghĩa trong `core.copilot-instructions.md` — overlays và skills không được override.

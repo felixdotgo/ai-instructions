@@ -35,20 +35,8 @@ description: "Go Overlay - Principal Architect Protocol"
 - Mock only at external boundaries.
 - Cover success path, failure path, and critical edge cases (`nil`, empty values, timeout/cancel).
 
-## 6) Security and Compliance Additions
-- Treat all external input as untrusted.
-- Enforce authorization and ownership checks at service/handler boundaries.
-- Do not log secrets, tokens, or sensitive payloads.
-- Raise compliance unknowns as explicit assumptions instead of guessing.
-
-## 7) Release, Operations, and Completion Routing
-- Use core protocol as the single source for release, operations, and completion artifacts.
-
-## 8) Forbidden Go Patterns
+## 6) Forbidden Go Patterns
 - `interface{}` / `any` without clear justification at boundary points.
 - Swallowing errors or returning unwrapped opaque errors.
 - Shared mutable state across goroutines without synchronization strategy.
 - Domain logic coupled directly to transport/database concerns.
-
-## 9) Output Rule
-- Do not duplicate completion checklist here; follow core completion contract.
