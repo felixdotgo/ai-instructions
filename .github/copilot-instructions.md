@@ -18,3 +18,28 @@ Reusable skill guides in `.claude/skills/`:
 - `clean-code-refactor` — tech debt, readability, maintainability
 - `security-reliability` — trust boundaries, data handling, stability
 - `delivery-sdlc-execution` — multi-gate delivery with release + ops handoff
+- `failure-escalation` — auto-escalate from retry → re-plan → user when fixes fail repeatedly
+- `session-continuity` — checkpoint progress for long tasks; auto-resume across sessions
+- `docs-discovery` — fast documentation lookup; INDEX.md-first strategy
+- `domain-onboarding` — bootstrap domain knowledge from codebase for new projects
+- `code-review-pr` — structured PR/MR review with severity + actionable suggestions
+- `agent-orchestration` — multi-agent parallel execution for large independent tasks
+- `migration-upgrade` — safe database migrations, dependency upgrades, framework bumps
+
+## Failure Escalation
+- Max 2 fix attempts per approach; then switch approach via `debugging-root-cause`
+- After 2 failed approaches: re-plan via `problem-decomposition`
+- After re-plan still fails: stop and escalate to user with full report
+- See `failure-escalation` skill for detailed protocol
+
+## Session Continuity
+- Multi-slice tasks: auto-checkpoint to `.claude/checkpoints/` after each slice
+- At ~85% context budget: finalize, checkpoint, stop with resume instructions
+- On resume: read latest checkpoint, verify file state, continue
+- See `session-continuity` skill for detailed protocol
+
+## Documentation Discovery
+- If project has `docs/` directory: check `docs/INDEX.md` first
+- If no index: suggest creating one after first doc search
+- For domain questions: search docs before searching code
+- See `docs-discovery` skill for detailed protocol
