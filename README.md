@@ -35,12 +35,12 @@ Both tools share the same skills directory. Language overlays for Copilot use `a
 └── .github/
     ├── copilot-instructions.md                        # Copilot global entry point
     └── instructions/                                  # Copilot language overlays (auto-applied)
-        ├── core.copilot-instructions.md
-        ├── go.copilot-instructions.md
-        ├── js.copilot-instructions.md
-        ├── php.copilot-instructions.md
-        ├── system-design.copilot-instructions.md
-        └── project-space-template.copilot-instructions.md
+        ├── core.instructions.md
+        ├── go.instructions.md
+        ├── js.instructions.md
+        ├── php.instructions.md
+        ├── system-design.instructions.md
+        └── project-space-template.instructions.md
 ```
 
 ## Instruction Layers
@@ -54,7 +54,7 @@ Both tools share the same skills directory. Language overlays for Copilot use `a
 
 ### Copilot (`.github/`)
 - `copilot-instructions.md` — global entry: precedence model, language preference, skills reference
-- `core.copilot-instructions.md` — cross-language contract: operating modes, token efficiency, SDLC gates, clean code, security, completion contract
+- `core.instructions.md` — cross-language contract: operating modes, token efficiency, SDLC gates, clean code, security, completion contract
 - Language overlays — auto-applied by file type via `applyTo` frontmatter
 
 ## Skills Reference
@@ -77,8 +77,8 @@ Platform policies > User request > Core protocol > Language overlay > Project-sp
 ## Project Customization
 
 ### For Copilot
-1. Copy `.github/instructions/project-space-template.copilot-instructions.md`
-2. Rename to `<project>.copilot-instructions.md`
+1. Copy `.github/instructions/project-space-template.instructions.md`
+2. Rename to `<project>.instructions.md`
 3. Set `applyTo` to the project scope
 4. Replace all `{{PLACEHOLDER}}` values
 
@@ -88,7 +88,7 @@ Platform policies > User request > Core protocol > Language overlay > Project-sp
 3. Replace all `{{PLACEHOLDER}}` values
 
 ## Maintenance Rules
-- Shared rules belong in `core.copilot-instructions.md` (Copilot) or `CLAUDE.md` (Claude)
+- Shared rules belong in `core.instructions.md` (Copilot) or `CLAUDE.md` (Claude)
 - Keep overlays thin and language-specific — no duplicating core rules
 - New language: create a thin overlay referencing core behavior
 - Skills are shared — update `.claude/skills/` only

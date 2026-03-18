@@ -35,12 +35,12 @@ Cả hai công cụ dùng chung thư mục skills. Language overlay cho Copilot 
 └── .github/
     ├── copilot-instructions.md                        # Điểm vào toàn cục cho Copilot
     └── instructions/                                  # Language overlay cho Copilot (tự động áp dụng)
-        ├── core.copilot-instructions.md
-        ├── go.copilot-instructions.md
-        ├── js.copilot-instructions.md
-        ├── php.copilot-instructions.md
-        ├── system-design.copilot-instructions.md
-        └── project-space-template.copilot-instructions.md
+        ├── core.instructions.md
+        ├── go.instructions.md
+        ├── js.instructions.md
+        ├── php.instructions.md
+        ├── system-design.instructions.md
+        └── project-space-template.instructions.md
 ```
 
 ## Các lớp hướng dẫn
@@ -54,7 +54,7 @@ Cả hai công cụ dùng chung thư mục skills. Language overlay cho Copilot 
 
 ### Copilot (`.github/`)
 - `copilot-instructions.md` — điểm vào toàn cục: mô hình ưu tiên, ngôn ngữ mặc định, tham chiếu skills
-- `core.copilot-instructions.md` — hợp đồng đa ngôn ngữ: chế độ hoạt động, hiệu quả token, SDLC gates, clean code, bảo mật, hợp đồng hoàn tất
+- `core.instructions.md` — hợp đồng đa ngôn ngữ: chế độ hoạt động, hiệu quả token, SDLC gates, clean code, bảo mật, hợp đồng hoàn tất
 - Language overlay — tự động áp dụng theo loại file qua frontmatter `applyTo`
 
 ## Danh sách Skills
@@ -77,8 +77,8 @@ Platform policies > User request > Core protocol > Language overlay > Project-sp
 ## Tùy chỉnh theo dự án
 
 ### Cho Copilot
-1. Sao chép `.github/instructions/project-space-template.copilot-instructions.md`
-2. Đổi tên thành `<project>.copilot-instructions.md`
+1. Sao chép `.github/instructions/project-space-template.instructions.md`
+2. Đổi tên thành `<project>.instructions.md`
 3. Đặt `applyTo` đúng phạm vi dự án
 4. Thay toàn bộ `{{PLACEHOLDER}}` bằng quy tắc của dự án
 
@@ -88,7 +88,7 @@ Platform policies > User request > Core protocol > Language overlay > Project-sp
 3. Thay toàn bộ `{{PLACEHOLDER}}` bằng quy tắc của dự án
 
 ## Quy tắc bảo trì
-- Quy tắc dùng chung thuộc về `core.copilot-instructions.md` (Copilot) hoặc `CLAUDE.md` (Claude)
+- Quy tắc dùng chung thuộc về `core.instructions.md` (Copilot) hoặc `CLAUDE.md` (Claude)
 - Giữ overlay mỏng và tập trung theo ngôn ngữ — không lặp lại quy tắc core
 - Thêm ngôn ngữ mới: tạo overlay mỏng tham chiếu hành vi từ core
 - Skills dùng chung — chỉ cập nhật trong `.claude/skills/`
