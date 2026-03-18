@@ -43,6 +43,7 @@ Single-purpose · explicit contracts · low coupling · precise domain-aligned n
 - **Implementation**: modified files + validation results + residual risk
 - **Design**: architecture + trade-offs + assumptions
 - **Review**: findings + severity + remediation
+- **Doc Sync** (all modes): after any structural/behavioral change, check and update `README.md`, `README.vi.md`, and any related docs (e.g. `CHANGELOG`, ADRs, wiki pages) so code and documentation always reflect each other consistently
 
 ## Skills
 For specialized workflows, load `.claude/skills/<name>.md`:

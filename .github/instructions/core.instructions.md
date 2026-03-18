@@ -55,3 +55,4 @@ Uncertain → search workspace first → smallest safe assumption → document u
 - **Implementation**: modified files + validation results + residual risk
 - **Design**: architecture output + trade-offs + assumptions
 - **Review**: findings + severity + remediation steps
+- **Doc Sync** (all modes): after any structural/behavioral change, check and update `README.md`, `README.vi.md`, and any related docs (e.g. `CHANGELOG`, ADRs, wiki pages) so code and documentation always reflect each other consistently
