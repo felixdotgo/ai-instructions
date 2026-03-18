@@ -1,72 +1,94 @@
 **Ngôn ngữ:** [English](README.md) | [Tiếng Việt](README.vi.md)
 
-# Kho Hướng Dẫn Copilot
+# Kho Hướng Dẫn AI
 
-Kho này chứa bộ file hướng dẫn Copilot theo kiến trúc phân lớp, giúp thực thi chính xác, dễ bảo trì và bao phủ đầy đủ SDLC.
+Bộ file hướng dẫn phân lớp cho các trợ lý AI (Claude + GitHub Copilot), được thiết kế để thực thi chính xác, tối ưu token và bao phủ đầy đủ SDLC.
+
+## Hỗ trợ công cụ
+
+| Công cụ | Điểm vào | Skills |
+|---------|----------|--------|
+| **Claude** | `CLAUDE.md` | `.claude/skills/` |
+| **Copilot** | `.github/copilot-instructions.md` | `.claude/skills/` |
+
+Cả hai công cụ dùng chung thư mục skills. Language overlay cho Copilot sử dụng frontmatter `applyTo` để tự động khớp theo loại file.
+
+## Cấu trúc repository
+
+```
+.
+├── CLAUDE.md                                          # Điểm vào cho Claude
+├── .claude/
+│   ├── skills/                                        # Skill dùng chung (Claude + Copilot)
+│   │   ├── problem-decomposition.md
+│   │   ├── debugging-root-cause.md
+│   │   ├── testing-verification.md
+│   │   ├── clean-code-refactor.md
+│   │   ├── security-reliability.md
+│   │   └── delivery-sdlc-execution.md
+│   └── instructions/                                  # Language overlay cho Claude
+│       ├── go.md
+│       ├── js.md
+│       ├── php.md
+│       ├── system-design.md
+│       └── project-space-template.md
+└── .github/
+    ├── copilot-instructions.md                        # Điểm vào toàn cục cho Copilot
+    └── instructions/                                  # Language overlay cho Copilot (tự động áp dụng)
+        ├── core.copilot-instructions.md
+        ├── go.copilot-instructions.md
+        ├── js.copilot-instructions.md
+        ├── php.copilot-instructions.md
+        ├── system-design.copilot-instructions.md
+        └── project-space-template.copilot-instructions.md
+```
 
 ## Các lớp hướng dẫn
-- `.github/copilot-instructions.md`
-	- Điểm vào toàn cục cho tất cả mô hình AI trong repository
-	- Định nghĩa hành vi mặc định và điều hướng tới các lớp hướng dẫn
-- `.github/instructions/core.copilot-instructions.md`
-	- Hợp đồng hành vi đa ngôn ngữ
-	- Các cổng SDLC (từ yêu cầu đến học sau sự cố)
-	- Nền tảng clean code và nguyên tắc lập trình
-	- Hợp đồng hoàn tất và báo cáo
-- `.github/instructions/go.copilot-instructions.md`
-	- Tiêu chuẩn triển khai dành riêng cho Go
-- `.github/instructions/js.copilot-instructions.md`
-	- Tiêu chuẩn triển khai dành riêng cho JavaScript/TypeScript
-- `.github/instructions/php.copilot-instructions.md`
-	- Tiêu chuẩn triển khai dành riêng cho Laravel/PHP
-- `.github/instructions/system-design.copilot-instructions.md`
-	- Quy tắc đầu ra cho tài liệu kiến trúc/system design
-- `.github/instructions/project-space-template.copilot-instructions.md`
-	- Mẫu placeholder để tùy chỉnh theo từng dự án
-	- Placeholder cho SDLC, nguyên tắc code, bảo mật và vận hành
-- `.github/skills/problem-decomposition/SKILL.md`
-	- File skill cho AI agent để phân rã bài toán có cấu trúc
-	- Hướng dẫn bổ trợ cho lập kế hoạch theo lát cắt triển khai và kiểm chứng
-- `.github/skills/debugging-root-cause/SKILL.md`
-	- File skill cho quy trình debug theo bằng chứng và cô lập nguyên nhân gốc
-- `.github/skills/testing-verification/SKILL.md`
-	- File skill cho chiến lược kiểm thử/xác minh theo mức rủi ro
-- `.github/skills/clean-code-refactor/SKILL.md`
-	- File skill cho refactor clean code theo từng bước an toàn
-- `.github/skills/security-reliability/SKILL.md`
-	- File skill cho tăng cường bảo mật và độ tin cậy vận hành
-- `.github/skills/delivery-sdlc-execution/SKILL.md`
-	- File skill cho thực thi đầu-cuối theo SDLC
 
-## Mô hình ưu tiên (precedence)
-Khi nhiều file cùng áp dụng, xử lý xung đột theo thứ tự sau:
-1. chính sách an toàn của nền tảng/hệ thống
-2. yêu cầu của người dùng
-3. `.github/instructions/core.copilot-instructions.md`
-4. overlay theo ngôn ngữ hoặc system design
-5. file tùy chỉnh theo dự án (nếu có)
+### Dùng chung (cả hai công cụ)
+- **Skills** (`.claude/skills/`) — hướng dẫn quy trình tái sử dụng cho các tác vụ chuyên biệt
 
-## Phạm vi bao phủ SDLC
-Bộ hướng dẫn bao phủ rõ ràng:
-- Yêu cầu và tiêu chí chấp nhận
-- Phân tích và đánh giá tác động
-- Thiết kế và đánh đổi
-- Triển khai và chất lượng mã
-- Xác minh và kiểm thử
-- Sẵn sàng phát hành và rollback
-- Vận hành và quan sát hệ thống
-- Bảo trì và kế hoạch deprecation
-- Ứng phó sự cố và học sau sự cố
+### Claude (`CLAUDE.md`)
+- Quy tắc giao tiếp, ngân sách token, SDLC gates, quy tắc kỹ thuật cốt lõi
+- Tham chiếu `.claude/instructions/` để biết chi tiết theo ngôn ngữ
+
+### Copilot (`.github/`)
+- `copilot-instructions.md` — điểm vào toàn cục: mô hình ưu tiên, ngôn ngữ mặc định, tham chiếu skills
+- `core.copilot-instructions.md` — hợp đồng đa ngôn ngữ: chế độ hoạt động, hiệu quả token, SDLC gates, clean code, bảo mật, hợp đồng hoàn tất
+- Language overlay — tự động áp dụng theo loại file qua frontmatter `applyTo`
+
+## Danh sách Skills
+
+| Skill | Khi nào dùng |
+|-------|-------------|
+| `problem-decomposition` | Tác vụ rộng/mơ hồ, đa file, đa giai đoạn |
+| `debugging-root-cause` | Bug, regression, flaky test, sự cố production |
+| `testing-verification` | Bất kỳ thay đổi code/config không tầm thường nào |
+| `clean-code-refactor` | Nợ kỹ thuật, cải thiện khả năng đọc và bảo trì |
+| `security-reliability` | Ranh giới tin cậy, xử lý dữ liệu, ổn định vận hành |
+| `delivery-sdlc-execution` | Delivery đa cổng với bàn giao release và ops |
+
+## Mô hình ưu tiên
+Platform policies > User request > Core protocol > Language overlay > Project-specific
+
+## SDLC Gates
+**A**-Requirements → **B**-Analysis → **C**-Design → **D**-Build → **E**-Verify → **F**-Release → **G**-Ops → **H**-Maintain → **I**-Incident
+
+## Tùy chỉnh theo dự án
+
+### Cho Copilot
+1. Sao chép `.github/instructions/project-space-template.copilot-instructions.md`
+2. Đổi tên thành `<project>.copilot-instructions.md`
+3. Đặt `applyTo` đúng phạm vi dự án
+4. Thay toàn bộ `{{PLACEHOLDER}}` bằng quy tắc của dự án
+
+### Cho Claude
+1. Sao chép `.claude/instructions/project-space-template.md`
+2. Hợp nhất vào `CLAUDE.md` của dự án hoặc lưu thành `.claude/instructions/project.md`
+3. Thay toàn bộ `{{PLACEHOLDER}}` bằng quy tắc của dự án
 
 ## Quy tắc bảo trì
-- Giữ quy tắc dùng chung trong `core.copilot-instructions.md`.
-- Giữ các overlay mỏng và tập trung theo ngôn ngữ.
-- Tránh lặp lại các khối chính sách giữa các overlay.
-- Nếu thêm ngôn ngữ mới, tạo một overlay mỏng tham chiếu hành vi từ core.
-
-## Cách dùng mẫu tùy chỉnh theo dự án
-1. Sao chép `.github/instructions/project-space-template.copilot-instructions.md`.
-2. Đổi tên bản sao thành file riêng cho dự án (ví dụ: `.github/instructions/my-project.copilot-instructions.md`).
-3. Đặt `applyTo` đúng phạm vi dự án mong muốn.
-4. Thay toàn bộ `{{PLACEHOLDER}}` bằng quy tắc cụ thể của dự án.
-5. Giữ tiêu chuẩn dùng chung ở core; chỉ để phần khác biệt trong file dự án.
+- Quy tắc dùng chung thuộc về `core.copilot-instructions.md` (Copilot) hoặc `CLAUDE.md` (Claude)
+- Giữ overlay mỏng và tập trung theo ngôn ngữ — không lặp lại quy tắc core
+- Thêm ngôn ngữ mới: tạo overlay mỏng tham chiếu hành vi từ core
+- Skills dùng chung — chỉ cập nhật trong `.claude/skills/`

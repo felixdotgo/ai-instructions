@@ -1,9 +1,8 @@
 ---
-applyTo: "**/*.go"
-description: "Go Overlay — Principal Architect Protocol"
+description: "Go Overlay — Claude Instructions. Apply when working on Go files."
 ---
 
-Extends core protocol. Go-specific rules only; shared behavior in `core.copilot-instructions.md`.
+Extends core protocol (`CLAUDE.md`). Go-specific rules only; shared behavior in core.
 
 ## Architecture
 - Follow existing project structure and package boundaries

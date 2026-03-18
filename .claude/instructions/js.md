@@ -1,9 +1,8 @@
 ---
-applyTo: "**/*.{js,jsx,ts,tsx,mjs,cjs}"
-description: "JavaScript/TypeScript Overlay — Principal Architect Protocol"
+description: "JavaScript/TypeScript Overlay — Claude Instructions. Apply when working on JS/TS files."
 ---
 
-Extends core protocol. JS/TS-specific rules only; shared behavior in `core.copilot-instructions.md`.
+Extends core protocol (`CLAUDE.md`). JS/TS-specific rules only; shared behavior in core.
 
 ## Types and API Design
 - Precise static typing; avoid `any`; use `unknown` + type guards when necessary

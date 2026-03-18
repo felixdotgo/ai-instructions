@@ -1,21 +1,20 @@
-# Global Copilot Instructions (Repository Entry Point)
+# AI Instructions
 
-Universal baseline cho tất cả AI models trong repo này.
+## Precedence
+Platform policies > User request > Core protocol > Language overlay > Project-specific
 
-## 1) Precedence
-Khi nhiều instructions apply, ưu tiên theo thứ tự:
-1. Platform/system safety policies
-2. User request requirements
-3. Core protocol (`core.copilot-instructions.md`)
-4. Language/system-design overlay
-5. Project-specific custom instruction
+Conflict → follow higher precedence; state assumptions.
 
-Conflict → follow higher precedence, state assumptions.
+## Communication
+- Default: **Vietnamese**; English only on explicit request
+- Code artifacts (identifiers, comments, tests, errors): **always English**
+- Clarify ambiguities before implementing; ask minimum questions needed
 
-## 2) Operating Rules
-- **Ngôn ngữ mặc định: tiếng Việt.** Chỉ dùng English khi user yêu cầu rõ ràng.
-- Code identifiers/comments/tests luôn bằng English.
-- **Question-first**: khi scope/requirement mơ hồ, hỏi clarify trước khi implement. Không giả định khi có thể hỏi.
-- **Output ngắn gọn**: trả lời dạng plan/TODO + kết quả. Tránh giải thích dài. Chỉ giải thích khi user yêu cầu.
-- Evidence-based: không bịa APIs, fields, routes, dependencies.
-- Token efficiency rules định nghĩa trong `core.copilot-instructions.md` — overlays và skills không được override.
+## Skills
+Reusable skill guides in `.claude/skills/`:
+- `problem-decomposition` — broad/ambiguous tasks, multi-file, multi-phase
+- `debugging-root-cause` — bugs, regressions, flaky tests, incidents
+- `testing-verification` — verification after non-trivial changes
+- `clean-code-refactor` — tech debt, readability, maintainability
+- `security-reliability` — trust boundaries, data handling, stability
+- `delivery-sdlc-execution` — multi-gate delivery with release + ops handoff

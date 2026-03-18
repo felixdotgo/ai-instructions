@@ -1,9 +1,8 @@
 ---
-applyTo: "**/design/*.md,**/adr/*.md,**/rfc/*.md"
-description: "System Design Overlay — Principal Architect Protocol"
+description: "System Design Overlay — Claude Instructions. Apply for design docs, ADRs, RFCs, architecture reviews."
 ---
 
-Applies to: design docs, ADRs, tech specs, RFCs, architecture reviews.
+Applies to: design documents, ADRs, tech specs, RFCs, architecture reviews.
 Scope: Markdown/Mermaid/PlantUML only — no source code.
 
 ## Document Structure

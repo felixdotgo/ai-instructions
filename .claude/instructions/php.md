@@ -1,9 +1,8 @@
 ---
-applyTo: "**/*.php"
-description: "PHP/Laravel Overlay — Principal Architect Protocol"
+description: "PHP/Laravel Overlay — Claude Instructions. Apply when working on PHP files."
 ---
 
-Extends core protocol. PHP/Laravel-specific rules only; shared behavior in `core.copilot-instructions.md`.
+Extends core protocol (`CLAUDE.md`). PHP/Laravel-specific rules only; shared behavior in core.
 
 ## Architecture
 - Follow Laravel conventions; thin controllers, logic in services/actions
