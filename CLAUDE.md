@@ -89,6 +89,9 @@ Single-purpose · explicit contracts · low coupling · precise domain-aligned n
 - **Design**: architecture + trade-offs + assumptions
 - **Review**: findings + severity + remediation
 - **Doc Sync** (all modes): after any structural/behavioral change, check and update `README.md`, `README.vi.md`, and any related docs (e.g. `CHANGELOG`, ADRs, wiki pages) so code and documentation always reflect each other consistently
+- **Terminology Preservation**: never translate technical terms, proper nouns, tool names, or domain-specific terminology. This applies to:
+  - **Multilingual docs**: when translating documentation (e.g. `README.md` → `README.vi.md`), translate surrounding prose only — keep terms like "skill", "overlay", "token", "checkpoint", "SDLC", "rollback", "migration" in original English form
+  - **Domain language (DDD)**: domain terms are Ubiquitous Language — always preserve them exactly as defined in the domain glossary (e.g. `domain-<project>.md`). Translating domain terms breaks shared understanding between code, docs, and team communication. If a domain term exists in the glossary or codebase, use it as-is regardless of output language
 
 ## Skills
 For specialized workflows, load `.claude/skills/<name>.md`:

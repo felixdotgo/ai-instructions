@@ -90,3 +90,7 @@ For multi-slice tasks that may exceed session limits:
 - **Design**: architecture output + trade-offs + assumptions
 - **Review**: findings + severity + remediation steps
 - **Doc Sync** (all modes): after any structural/behavioral change, check and update `README.md`, `README.vi.md`, and any related docs (e.g. `CHANGELOG`, ADRs, wiki pages) so code and documentation always reflect each other consistently
+- **Terminology Preservation**: never translate technical terms, domain-specific terms (Ubiquitous Language / DDD), proper nouns, or tool names — keep them in their original form across all contexts:
+  - *Multilingual docs*: when translating documentation (e.g. English → Vietnamese), translate surrounding prose only; keep terms like skill, overlay, checkpoint, token, rollback, migration intact
+  - *Domain language*: domain terms (e.g. Aggregate, Bounded Context, Entity, Value Object, and project-specific terms from the domain glossary) must remain untranslated in code, docs, and conversation — translating them breaks Ubiquitous Language alignment between code, docs, and team communication
+  - *Rationale*: terminology consistency ensures precision, searchability, and shared understanding across codebase and documentation

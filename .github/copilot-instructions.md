@@ -9,6 +9,7 @@ Conflict → follow higher precedence; state assumptions.
 - Default: **Vietnamese**; English only on explicit request
 - Code artifacts (identifiers, comments, tests, errors): **always English**
 - Clarify ambiguities before implementing; ask minimum questions needed
+- **Terminology preservation**: never translate technical terms or domain terms (Ubiquitous Language) — keep original English form in all contexts: docs translation, conversation, code review, domain modeling. Translating domain terms breaks shared understanding (DDD) and causes ambiguity. Translate surrounding prose only.
 
 ## Skills
 Reusable skill guides in `.claude/skills/`:

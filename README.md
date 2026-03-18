@@ -166,3 +166,6 @@ Platform policies > User request > Core protocol > Language overlay > Project-sp
 - New language: create a thin overlay referencing core behavior
 - Skills are shared — update `.claude/skills/` only
 - Self-regulation skills (`failure-escalation`, `session-continuity`) are always-on protocols, not manually activated
+- **Terminology preservation**: never translate technical terms, domain-specific terms (Ubiquitous Language / DDD), proper nouns, or tool names — keep them in their original form across all contexts:
+  - *Multilingual docs*: when translating documentation (e.g. `README.md` → `README.vi.md`), translate surrounding prose only; keep terms like "skill", "overlay", "token", "checkpoint", "SDLC", "rollback", "migration", "frontmatter" intact
+  - *Domain language*: domain terms are Ubiquitous Language — they must remain untranslated in code, docs, and conversation. Translating domain terms (e.g. "Invoice" → "Hóa đơn") breaks shared understanding between code, documentation, and team communication. If a domain glossary exists (e.g. `domain-<project>.md`), always use terms exactly as defined there regardless of output language

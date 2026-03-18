@@ -74,6 +74,8 @@ description: "Domain knowledge for <Project Name>"
 ```
 
 ### Phase 5: Review & Refine
+> **Terminology Rule**: Domain terms (Ubiquitous Language) must NEVER be translated — not in docs, not in conversation, not in code comments. Translating domain terms breaks the shared understanding between code, documentation, and team communication. This applies to all languages (Vietnamese, etc.). Example: if the domain uses "Invoice", "Shipment", "Ledger", "Claim" — keep them as-is everywhere.
+
 1. Present generated domain skill to user for review
 2. User corrects/supplements domain knowledge
 3. Finalize and save the domain skill file
@@ -84,12 +86,14 @@ description: "Domain knowledge for <Project Name>"
 - Mark low-confidence items with "(?)" for user review
 - Stop discovery after Phase 2 if user only needs quick context
 - Full Phase 1-5 for comprehensive onboarding
+- **Domain terms are sacred**: never translate Ubiquitous Language terms — they are the shared vocabulary between code, docs, and people. Translating them (e.g. "Invoice" → "Hóa đơn") creates semantic drift and breaks DDD alignment
 
 ## Anti-patterns
 - Reading every file in the project (token explosion)
 - Guessing domain terms without code evidence
 - Generating domain skill without user review
 - Ignoring test files (they often encode business rules clearly)
+- **Translating domain terms**: converting Ubiquitous Language into another language destroys the shared vocabulary that DDD depends on — domain terms must stay in their original form across code, docs, conversation, and UI labels where applicable
 
 ## Output
 Domain skill file draft → User review → Finalized `.claude/skills/domain-<name>.md`

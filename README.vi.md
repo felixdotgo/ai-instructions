@@ -1,23 +1,23 @@
 **Ngôn ngữ:** [English](README.md) | [Tiếng Việt](README.vi.md)
 
-# Kho Hướng Dẫn AI
+# AI Instructions Repository
 
-Bộ file hướng dẫn phân lớp cho các trợ lý AI (Claude + GitHub Copilot), được thiết kế để thực thi chính xác, tối ưu token và bao phủ đầy đủ SDLC.
+Bộ file hướng dẫn phân lớp cho các AI coding assistant (Claude + GitHub Copilot), được thiết kế để thực thi chính xác, tối ưu token và bao phủ đầy đủ SDLC.
 
-## Hỗ trợ công cụ
+## Tool Support
 
-| Công cụ | Điểm vào | Skills |
-|---------|----------|--------|
+| Công cụ | Entry Point | Skills |
+|---------|------------|--------|
 | **Claude** | `CLAUDE.md` | `.claude/skills/` |
 | **Copilot** | `.github/copilot-instructions.md` | `.claude/skills/` |
 
 Cả hai công cụ dùng chung thư mục skills. Language overlay cho Copilot sử dụng frontmatter `applyTo` để tự động khớp theo loại file.
 
-## Cấu trúc repository
+## Repository Structure
 
 ```
 .
-├── CLAUDE.md                                          # Điểm vào cho Claude
+├── CLAUDE.md                                          # Entry point cho Claude
 ├── .claude/
 │   ├── skills/                                        # Skill dùng chung (Claude + Copilot)
 │   │   ├── problem-decomposition.md
@@ -40,7 +40,7 @@ Cả hai công cụ dùng chung thư mục skills. Language overlay cho Copilot 
 │       ├── system-design.md
 │       └── project-space-template.md
 └── .github/
-    ├── copilot-instructions.md                        # Điểm vào toàn cục cho Copilot
+    ├── copilot-instructions.md                        # Global entry point cho Copilot
     └── instructions/                                  # Language overlay cho Copilot (tự động áp dụng)
         ├── core.instructions.md
         ├── go.instructions.md
@@ -50,49 +50,59 @@ Cả hai công cụ dùng chung thư mục skills. Language overlay cho Copilot 
         └── project-space-template.instructions.md
 ```
 
-## Các lớp hướng dẫn
+## Instruction Layers
 
 ### Dùng chung (cả hai công cụ)
-- **Skills** (`.claude/skills/`) — hướng dẫn quy trình tái sử dụng cho các tác vụ chuyên biệt
+- **Skills** (`.claude/skills/`) — hướng dẫn workflow tái sử dụng cho các tác vụ chuyên biệt
 
 ### Claude (`CLAUDE.md`)
-- Quy tắc giao tiếp, ngân sách token, SDLC gates, quy tắc kỹ thuật cốt lõi
+- Communication rule, token budget, SDLC gates, core engineering rule
 - Failure Escalation Protocol, Session Continuity, Documentation Discovery, Agent Orchestration
-- Tham chiếu `.claude/instructions/` để biết chi tiết theo ngôn ngữ
+- Tham chiếu `.claude/instructions/` để biết chi tiết language overlay
 
 ### Copilot (`.github/`)
-- `copilot-instructions.md` — điểm vào toàn cục: mô hình ưu tiên, ngôn ngữ mặc định, tham chiếu skills
-- `core.instructions.md` — hợp đồng đa ngôn ngữ: chế độ hoạt động, hiệu quả token, SDLC gates, failure escalation, docs discovery, session continuity, clean code, bảo mật, hợp đồng hoàn tất
+- `copilot-instructions.md` — global entry point: precedence model, ngôn ngữ mặc định, tham chiếu skills, failure escalation, session continuity, docs discovery
+- `core.instructions.md` — cross-language contract: operating modes, token efficiency, SDLC gates, failure escalation protocol, documentation discovery, session continuity, clean code, security, completion contract
 - Language overlay — tự động áp dụng theo loại file qua frontmatter `applyTo`
 
-## Danh sách Skills
+## Skills Reference
 
-### Skills cốt lõi — SDLC & Engineering
+### Core Workflow Skills
 
 | Skill | Khi nào dùng |
 |-------|-------------|
 | `problem-decomposition` | Tác vụ rộng/mơ hồ, đa file, đa giai đoạn |
-| `debugging-root-cause` | Bug, regression, flaky test, sự cố production |
+| `debugging-root-cause` | Bug, regression, flaky test, production incident |
 | `testing-verification` | Bất kỳ thay đổi code/config không tầm thường nào |
-| `clean-code-refactor` | Nợ kỹ thuật, cải thiện khả năng đọc và bảo trì |
-| `security-reliability` | Ranh giới tin cậy, xử lý dữ liệu, ổn định vận hành |
-| `delivery-sdlc-execution` | Delivery đa cổng với bàn giao release và ops |
-| `code-review-pr` | Review PR/MR với mức độ nghiêm trọng + đề xuất cụ thể |
-| `migration-upgrade` | Database migration, nâng cấp dependency/framework |
+| `clean-code-refactor` | Tech debt, cải thiện readability và maintainability |
+| `security-reliability` | Trust boundary, xử lý dữ liệu, operational stability |
+| `delivery-sdlc-execution` | Multi-gate delivery với release và ops handoff |
+| `code-review-pr` | Review PR/MR với severity level + actionable suggestion |
+| `migration-upgrade` | Database migration, dependency upgrade, framework version bump |
 
-### Skills tự động hóa — Session & Workflow
+### Self-Regulation Skills
 
 | Skill | Khi nào dùng |
 |-------|-------------|
-| `failure-escalation` | Tự động kích hoạt khi implementation/debug; ngăn vòng lặp sửa lỗi vô hạn |
+| `failure-escalation` | Tự động kích hoạt khi implementation/debug; ngăn endless fix loop |
 | `session-continuity` | Task dài, đa slice, sắp hết context budget |
+
+### Knowledge & Discovery Skills
+
+| Skill | Khi nào dùng |
+|-------|-------------|
 | `docs-discovery` | Tìm kiếm domain/project knowledge từ tài liệu |
 | `domain-onboarding` | Lần đầu làm việc với dự án/domain mới; bootstrap domain knowledge |
-| `agent-orchestration` | Task lớn với ≥3 subtree độc lập cần thực thi song song |
 
-## Các tính năng chính
+### Collaboration & Operations Skills
 
-### Failure Escalation Protocol
+| Skill | Khi nào dùng |
+|-------|-------------|
+| `agent-orchestration` | Task lớn với ≥3 subtree độc lập cần parallel execution |
+
+## Key Protocols
+
+### Failure Escalation (auto-active)
 Tự động kích hoạt trong mọi task Implementation và debugging. Ngăn AI liên tục cố sửa lỗi theo cùng một cách.
 
 | Cấp độ | Khi nào | Hành động |
@@ -102,8 +112,8 @@ Tự động kích hoạt trong mọi task Implementation và debugging. Ngăn A
 | 3. Re-plan | 2 approach khác nhau đều thất bại | Dừng → chuyển Planning mode → phân tách lại bài toán |
 | 4. Escalate | Re-plan vẫn thất bại | Dừng → báo cáo chi tiết → hỏi user |
 
-### Session Continuity
-Quản lý task dài vượt giới hạn session. Tự động checkpoint tiến độ để resume liền mạch.
+### Session Continuity (auto-active cho large task)
+Quản lý task dài vượt giới hạn session. Tự động checkpoint progress để resume liền mạch.
 
 - Checkpoint vào `.claude/checkpoints/<task-slug>.md` sau mỗi slice hoàn thành
 - Ở ~70% context budget: checkpoint + thông báo user
@@ -111,36 +121,35 @@ Quản lý task dài vượt giới hạn session. Tự động checkpoint tiế
 - Khi resume: đọc checkpoint → xác minh file state → tiếp tục từ slice tiếp theo
 
 ### Documentation Discovery
-Tìm tài liệu nhanh khi dự án có thư mục `docs/`.
+Fast documentation lookup khi dự án có thư mục `docs/`.
 
-- Ưu tiên đọc `docs/INDEX.md` trước (1 file read duy nhất)
-- Nếu không có index: quét filename → grep keyword → đọc file khớp
-- Tối đa 3 lần đọc document/request (tiết kiệm token)
-- Tự động đề xuất tạo `docs/INDEX.md` khi `docs/` tồn tại nhưng chưa có index
+- **INDEX.md-first**: cheapest lookup path, single file read
+- **Fallback**: filename scan → grep → deep search
+- **Auto-maintenance**: đề xuất tạo/cập nhật `docs/INDEX.md`
 
 ### Agent Orchestration
-Phân công task song song cho nhiều agent khi task đủ lớn.
+Parallel execution cho large independent task.
 
-- Phân tách task thành slice song song (không chia sẻ file) vs tuần tự (có phụ thuộc)
-- Mỗi agent nhận context đầy đủ, độc lập (không truy cập hội thoại cha)
-- Thread chính phụ trách điều phối, giải quyết conflict, verification tích hợp
+- Phân tách task thành parallel-safe slice (non-overlapping file ownership) vs sequential slice (có dependency)
+- Mỗi agent nhận self-contained context, độc lập (không truy cập parent conversation)
+- Main thread phụ trách điều phối, conflict resolution, integration verification
 
 ### Domain Onboarding
 Bootstrap domain knowledge nhanh cho dự án mới.
 
-1. Quét tổng quan: README, cấu trúc thư mục, tech stack
-2. Khám phá entity: model/entity layer, migrations, API routes
-3. Trích xuất business rules: validation, constants, authorization
+1. Rapid scan: README, cấu trúc thư mục, tech stack
+2. Entity discovery: model/entity layer, migration, API route
+3. Business rule extraction: validation, constant, authorization
 4. Tạo domain skill file: `.claude/skills/domain-<project>.md`
 5. User review và hoàn thiện
 
-## Mô hình ưu tiên
+## Precedence Model
 Platform policies > User request > Core protocol > Language overlay > Project-specific
 
 ## SDLC Gates
 **A**-Requirements → **B**-Analysis → **C**-Design → **D**-Build → **E**-Verify → **F**-Release → **G**-Ops → **H**-Maintain → **I**-Incident
 
-## Tùy chỉnh theo dự án
+## Project Customization
 
 ### Cho Copilot
 1. Sao chép `.github/instructions/project-space-template.instructions.md`
@@ -153,14 +162,25 @@ Platform policies > User request > Core protocol > Language overlay > Project-sp
 2. Hợp nhất vào `CLAUDE.md` của dự án hoặc lưu thành `.claude/instructions/project.md`
 3. Thay toàn bộ `{{PLACEHOLDER}}` bằng quy tắc của dự án
 
-### Onboard domain mới nhanh
-1. Chạy skill `domain-onboarding` trên codebase mới
-2. AI tự scan và tạo draft `.claude/skills/domain-<project>.md`
-3. User review, chỉnh sửa, hoàn thiện → done trong 1 session
+### Domain Knowledge (any tool)
+1. Kích hoạt skill `domain-onboarding` trong dự án mới
+2. AI scan codebase và tạo draft `.claude/skills/domain-<name>.md`
+3. Review và hoàn thiện domain skill đã tạo
+4. Domain knowledge sẵn sàng cho mọi session sau đó
 
-## Quy tắc bảo trì
-- Quy tắc dùng chung thuộc về `core.instructions.md` (Copilot) hoặc `CLAUDE.md` (Claude)
-- Giữ overlay mỏng và tập trung theo ngôn ngữ — không lặp lại quy tắc core
-- Thêm ngôn ngữ mới: tạo overlay mỏng tham chiếu hành vi từ core
+### Documentation Index
+1. Nếu dự án có thư mục `docs/`, tạo `docs/INDEX.md` với topic→file mapping
+2. AI sử dụng index này để fast documentation lookup
+3. Index được auto-maintain khi docs thay đổi
+
+## Maintenance Rules
+- Shared rule thuộc về `core.instructions.md` (Copilot) hoặc `CLAUDE.md` (Claude)
+- Giữ overlay mỏng và tập trung theo ngôn ngữ — không lặp lại core rule
+- Thêm ngôn ngữ mới: tạo thin overlay tham chiếu core behavior
 - Skills dùng chung — chỉ cập nhật trong `.claude/skills/`
-- Checkpoint files (`.claude/checkpoints/`) là ephemeral — không commit vào version control
+- Self-regulation skill (`failure-escalation`, `session-continuity`) là always-on protocol, không cần kích hoạt thủ công
+- Checkpoint file (`.claude/checkpoints/`) là ephemeral — không commit vào version control
+- **Terminology preservation**: không bao giờ dịch technical term, tool name, proper noun hoặc domain term — giữ nguyên dạng gốc tiếng Anh trong mọi ngữ cảnh:
+  - *Multilingual doc*: khi dịch tài liệu (ví dụ `README.md` → `README.vi.md`), chỉ dịch phần diễn giải xung quanh; giữ nguyên các term như skill, overlay, token, checkpoint, SDLC, rollback, migration, frontmatter
+  - *Domain language (DDD)*: domain term chính là Ubiquitous Language — phải giữ nguyên trong code, tài liệu và giao tiếp. Dịch domain term (ví dụ "Invoice" → "Hóa đơn") phá vỡ sự thống nhất giữa code, doc và team, gây sai lệch hiểu biết chung
+  - *Lý do*: tính nhất quán thuật ngữ đảm bảo độ chính xác, khả năng tìm kiếm và shared understanding xuyên suốt codebase và tài liệu
